@@ -14,6 +14,9 @@
     --score-text: hsl(229, 64%, 46%);
     --header-outline: hsl(217, 16%, 45%);
     --white: rgb(210, 195, 195);
+    --color-rock: hsl(349, 71%, 52%), hsl(349, 70%, 56%);
+    --color-paper: hsl(230, 89%, 62%), hsl(230, 89%, 65%);
+    --color-scissors: hsl(39, 89%, 49%), hsl(40, 84%, 53%);
 }
 
 * {
@@ -27,6 +30,8 @@ body {
     min-width: 100vw;
     min-height: 100vh;
     background: radial-gradient(at top, hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+    padding: 45px 40px;
+    text-transform: uppercase;
 }
 
 header {
@@ -35,8 +40,8 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 800px;
-    margin: 45px auto;
+    max-width: 600px;
+    margin: 0 auto;
     padding: 12px 24px;
     border-radius: 10px;
     color: var(--white);
@@ -65,4 +70,181 @@ h1 span {
 .points {
     display: block;
     font-size: 45px;
+}
+
+main {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    padding: 200px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* section options */
+.options {
+    background-image: url('images/bg-triangle.svg');
+    background-size: cover;
+    width: 50%;
+    aspect-ratio: 313/278;
+    position: relative;
+}
+
+.options .btn {
+    position: absolute;
+    width: 45%;
+}
+
+.btn {
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.btn img {
+    width: 50%;
+}
+.btn-img-container {
+    background-color: var(--white);
+    width: 80%;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: inset 0px 6px 1px rgba(0, 0, 0, 0.2);
+}
+
+.btn--paper {
+    background: linear-gradient(var(--color-paper));
+}
+
+.btn--scissors {
+    background: linear-gradient(var(--color-scissors));
+}
+
+.btn--rock {
+    background: linear-gradient(var(--color-rock));
+}
+
+.options .btn--paper {
+    left: 0;
+    top: 0;
+    transform: translate(-50%, -50%);
+}
+
+.options .btn--scissors {
+    right: 0;
+    top: 0;
+    transform: translate(50%, -50%);
+}
+
+.options .btn--rock {
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 50%);
+}
+
+/* section fight */
+.fight {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    color: var(--white);
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.pick {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    width: 40%;
+}
+
+.pick span {
+    padding: 0 0 40px;
+}
+
+.fight .btn {
+    width: 100%;
+    cursor: default;
+}
+
+.placeholder {
+    width: 80%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.197);
+    margin-top: 10%;
+    z-index: -1;
+}
+
+.pick--ai .btn {
+    position: relative;
+    top: -40%;
+    animation-name: displayBtn;
+    animation-delay: 1s;
+    animation-duration: 1s;
+    animation-fill-mode: backwards;
+}
+
+.pick--ai.animated {
+    animation-name: moveRight;
+}
+
+.pick--player.animated {
+    animation-name: moveLeft;
+}
+.pick--ai.animated,
+.pick--player.animated {
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+    animation-delay: 2.2s;
+}
+
+@keyframes displayBtn {
+    0% {
+        opacity: 0;
+    }
+    60% {
+        transform: scale(1.1);
+    }
+    80% {
+        transform: scale(0.9);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes moveLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes moveRight {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(50%);
+    }
+}
+
+.hidden {
+    display: none;
 }

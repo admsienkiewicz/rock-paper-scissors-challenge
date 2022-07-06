@@ -11,7 +11,7 @@
   <header>
     <h1>
       <span>Rock</span>
-      <span>Papper</span>
+      <span>Paper</span>
       <span>Scissors</span>
     </h1>
     <div class="score-box">
@@ -19,11 +19,40 @@
       <strong class="points">12</strong>
     </div>
   </header>
-
+  <main>
+    <section class="options">
+      <button class="btn btn--paper">
+        <div class="btn-img-container">
+          <img src="images/icon-paper.svg" alt="Paper">
+        </div>
+      </button>
+      <button class="btn btn--rock">
+        <div class="btn-img-container">
+          <img src="images/icon-rock.svg" alt="Rock">
+        </div>
+        </button>
+      <button class="btn btn--scissors">
+        <div class="btn-img-container">
+          <img src="images/icon-scissors.svg" alt="Scissors">
+        </div>
+      </button>
+    </section> 
+    <section class="fight hidden">
+      <div class="pick pick--player">
+        <span>you picked</span>
+      </div>
+      <div class="pick pick--ai">
+        <span>the house picked</span>
+        <div class="placeholder"></div>
+      </div>
+    </section>
+  </main>
   
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Your Name Here</a>.
   </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
