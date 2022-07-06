@@ -3,7 +3,7 @@ const points = document.querySelector('.points')
 const optionSection = document.querySelector('.options')
 const fightSection = document.querySelector('.fight')
 
-const optionsButtons = document.querySelectorAll('.btn')
+let optionsButtons = document.querySelectorAll('.options .btn')
 
 const gameSate = {
     playerPick: '',
@@ -14,6 +14,7 @@ const gameSate = {
 const updateScore = (win) => {
     const currScore = points.innerHTML
     points.innerHTML = win ? Number(currScore) + 1 : Number(currScore) - 1
+    gameSate.score = points.innerHTML
 }
 
 const generateUserPick = (btn) => {
@@ -50,10 +51,14 @@ const getResult = (aiPick, userPick) => {
     switch (true) {
         case aiPick === userPick:
             return 'DRAW'
-        case (aiPick === 'paper' && userPick == 'rock') || (aiPick === 'scissors' && userPick === 'paper'):
-            return 'LOOSE'
-        case (userPick === 'paper' && aiPick == 'rock') || (userPick === 'scissors' && aiPick === 'paper'):
+        case (aiPick === 'paper' && userPick == 'rock') ||
+            (aiPick === 'scissors' && userPick === 'paper') ||
+            (aiPick === 'rock' && userPick === 'scissors'):
             return 'WIN'
+        case (userPick === 'paper' && aiPick == 'rock') ||
+            (userPick === 'scissors' && aiPick === 'paper') ||
+            (userPick === 'rock' && aiPick === 'scissors'):
+            return 'LOOSE'
         default:
             break
     }
@@ -63,6 +68,16 @@ const displayResult = (aiPick, userPick) => {
     const result = getResult(aiPick, userPick)
     document.querySelector('.pick--ai').classList.toggle('animated')
     document.querySelector('.pick--player').classList.toggle('animated')
+    const resultHtml = `<div class="result-container">
+    <span class="result--message">${result}</span>
+    <button class="btn-play-again">play again</button>
+    </div>`
+    document.querySelector('.fight').innerHTML += resultHtml
+    document.querySelector('.btn-play-again').addEventListener('click', init)
+    setTimeout(() => {
+        if (result === 'WIN') updateScore(true)
+        if (result === 'LOOSE') updateScore(false)
+    }, 3000)
 }
 
 const generatePicks = (btn) => {
@@ -70,22 +85,31 @@ const generatePicks = (btn) => {
     const userPick = generateAiPick()
     optionSection.classList.toggle('hidden')
     fightSection.classList.toggle('hidden')
-    removeListners()
     displayResult(aiPick, userPick)
 }
+optionsButtons.forEach((btn) => {
+    btn.addEventListener('click', () => generatePicks(btn))
+})
 
-const removeListners = () => {
-    optionsButtons.forEach((btn) => {
-        btn.removeEventListener('click', generatePicks)
-    })
+const removeElementsFromDom = () => {
+    const fightDiv = document.querySelector('.fight')
+    const playerPick = document.querySelector('.pick--player')
+    const aiPick = document.querySelector('.pick--ai')
+    fightDiv.removeChild(fightDiv.lastChild)
+    playerPick.removeChild(playerPick.lastChild)
+    aiPick.removeChild(aiPick.lastChild)
 }
 const init = () => {
-    optionsButtons.forEach((btn) => {
-        btn.addEventListener('click', () => generatePicks(btn))
-    })
     points.innerHTML = gameSate.score
     gameSate.aiPick = ''
     gameSate.playerPick = ''
+    if (optionSection.classList.contains('hidden')) {
+        optionSection.classList.toggle('hidden')
+        fightSection.classList.toggle('hidden')
+        document.querySelector('.pick--ai').classList.toggle('animated')
+        document.querySelector('.pick--player').classList.toggle('animated')
+        removeElementsFromDom()
+    }
 }
 
 init()

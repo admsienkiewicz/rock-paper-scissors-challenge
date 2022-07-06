@@ -158,6 +158,7 @@ main {
     color: var(--white);
     font-weight: 600;
     font-size: 20px;
+    position: relative;
 }
 
 .pick {
@@ -208,6 +209,43 @@ main {
     animation-fill-mode: forwards;
     animation-timing-function: ease-out;
     animation-delay: 2.2s;
+}
+
+.result-container {
+    position: absolute;
+    top: -5%;
+    left: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 42px;
+    width: 50%;
+    height: 50%;
+    margin-top: 10%;
+    animation-name: displayBtn;
+    animation-delay: 3.2s;
+    animation-duration: 1s;
+    animation-fill-mode: backwards;
+}
+
+.result--message {
+    display: block;
+    padding: 0 0 20px;
+}
+
+.btn-play-again {
+    width: 70%;
+    height: 50px;
+    text-transform: uppercase;
+    border: none;
+    background-color: var(--white);
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--dark-text);
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 @keyframes displayBtn {
