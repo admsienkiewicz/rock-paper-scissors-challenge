@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@300;400;500;600;700&display=swap');
+
+/* - Dark Text: hsl(229, 25%, 31%)
+- Score Text: hsl(229, 64%, 46%)
+- Header Outline: hsl(217, 16%, 45%)
+- Scissors Gradient: hsl(39, 89%, 49%) to hsl(40, 84%, 53%)
+- Paper Gradient: hsl(230, 89%, 62%) to hsl(230, 89%, 65%)
+- Rock Gradient: hsl(349, 71%, 52%) to hsl(349, 70%, 56%)
+- Lizard Gradient: hsl(261, 73%, 60%) to hsl(261, 72%, 63%)
+- Cyan: hsl(189, 59%, 53%) to hsl(189, 58%, 57%) */
+
+:root {
+    --dark-text: hsl(229, 25%, 31%);
+    --score-text: hsl(229, 64%, 46%);
+    --header-outline: hsl(217, 16%, 45%);
+    --white: rgb(210, 195, 195);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    min-width: 100vw;
+    min-height: 100vh;
+    background: radial-gradient(at top, hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+}
+
+header {
+    text-transform: uppercase;
+    border: solid 2px var(--header-outline);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+    margin: 45px auto;
+    padding: 12px 24px;
+    border-radius: 10px;
+    color: var(--white);
+}
+
+h1 span {
+    display: block;
+    line-height: 25px;
+}
+
+.score-box {
+    color: var(--dark-text);
+    background-color: var(--white);
+    padding: 12px 42px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.score-box span {
+    font-weight: 600;
+    color: var(--score-text);
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+.points {
+    display: block;
+    font-size: 45px;
+}
