@@ -112,6 +112,8 @@ main {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    box-shadow: inset 2px -7px 2px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s;
 }
 
 .btn img {
@@ -125,7 +127,34 @@ main {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    box-shadow: inset 0px 6px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: inset -5px 6px 2px rgba(0, 0, 0, 0.2);
+}
+
+.options .btn--paper:hover {
+    transform: scale(1.2) translate(-40%, -40%);
+    box-shadow: -10px 15px 2px rgba(0, 0, 0, 0.2);
+}
+
+.options .btn--scissors:hover {
+    transform: scale(1.2) translate(40%, -40%);
+    box-shadow: -10px 15px 2px rgba(0, 0, 0, 0.2);
+}
+
+.options .btn--rock:hover {
+    transform: scale(1.2) translate(-40%, 40%);
+    box-shadow: -10px 15px 2px rgba(0, 0, 0, 0.2);
+}
+
+.options .btn--paper:active {
+    transform: scale(1.1) translate(-40%, -40%);
+}
+
+.options .btn--scissors:active {
+    transform: scale(1.1) translate(40%, -40%);
+}
+
+.options .btn--rock:active {
+    transform: scale(1.1) translate(-40%, 40%);
 }
 
 .btn--paper {
@@ -297,6 +326,17 @@ main {
     color: var(--dark-text);
     border-radius: 5px;
     cursor: pointer;
+    transition: all 0.2s ease-out;
+    box-shadow: -7px 7px 2px rgba(0, 0, 0, 0.2);
+}
+
+.btn-play-again:hover {
+    transform: scale(1.1);
+    box-shadow: -15px 15px 2px rgba(0, 0, 0, 0.2);
+}
+
+.btn-play-again:active {
+    transform: scale(1.05);
 }
 
 @keyframes displayBtn {
