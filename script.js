@@ -78,7 +78,7 @@ const displayResult = (aiPick, userPick) => {
     setTimeout(() => {
         if (result === 'WIN') updateScore(true)
         if (result === 'LOOSE') updateScore(false)
-    }, 3000)
+    }, 5000)
 }
 
 const generatePicks = (btn) => {

@@ -368,11 +368,16 @@ a:active {
     }
 
     .pick {
-        font-size: 14px;
+        font-size: 13px;
+        padding: 50px 0;
     }
 
     .pick span {
         padding: 0 0 20px;
+    }
+
+    .result-container {
+        top: -30%;
     }
 
     @keyframes moveLeft {
@@ -380,7 +385,7 @@ a:active {
             transform: translateX(0);
         }
         100% {
-            transform: translateX(-45%);
+            transform: translateX(-40%);
         }
     }
 
@@ -389,7 +394,7 @@ a:active {
             transform: translateX(0);
         }
         100% {
-            transform: translateX(45%);
+            transform: translateX(40%);
         }
     }
 
