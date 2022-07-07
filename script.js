@@ -59,7 +59,7 @@ const getResult = (aiPick, userPick) => {
         case (userPick === 'paper' && aiPick == 'rock') ||
             (userPick === 'scissors' && aiPick === 'paper') ||
             (userPick === 'rock' && aiPick === 'scissors'):
-            return 'LOOSE'
+            return 'LOSS'
         default:
             break
     }
