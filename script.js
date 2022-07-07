@@ -77,7 +77,7 @@ const displayResult = (aiPick, userPick) => {
     document.querySelector('.btn-play-again').addEventListener('click', init)
     setTimeout(() => {
         if (result === 'WIN') updateScore(true)
-        if (result === 'LOOSE') updateScore(false)
+        if (result === 'LOSS') updateScore(false)
     }, 5000)
 }
 
