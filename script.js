@@ -33,6 +33,7 @@ const generateAiPick = () => {
     const options = []
     optionsButtons.forEach((btn) => {
         options.push(btn.classList.value)
+        btn.disabled = true
     })
     const randomChoice = Math.trunc(Math.random() * 3)
     const aiChoice = options[randomChoice]
@@ -83,10 +84,16 @@ const displayResult = (aiPick, userPick) => {
 const generatePicks = (btn) => {
     const aiPick = generateUserPick(btn)
     const userPick = generateAiPick()
-    optionSection.classList.toggle('hidden')
-    fightSection.classList.toggle('hidden')
+    optionSection.classList.toggle('animated')
+    setTimeout(() => {
+        optionSection.classList.toggle('hidden')
+        fightSection.classList.toggle('animated')
+        fightSection.classList.toggle('hidden')
+    }, 1000)
+
     displayResult(aiPick, userPick)
 }
+
 optionsButtons.forEach((btn) => {
     btn.addEventListener('click', () => generatePicks(btn))
 })
@@ -103,10 +110,15 @@ const init = () => {
     points.innerHTML = gameSate.score
     gameSate.aiPick = ''
     gameSate.playerPick = ''
+    optionsButtons.forEach((btn) => {
+        btn.disabled = false
+    })
     if (optionSection.classList.contains('hidden')) {
         optionSection.classList.toggle('hidden')
         fightSection.classList.toggle('hidden')
+        optionSection.classList.toggle('animated')
         document.querySelector('.pick--ai').classList.toggle('animated')
+        fightSection.classList.toggle('animated')
         document.querySelector('.pick--player').classList.toggle('animated')
         removeElementsFromDom()
     }
