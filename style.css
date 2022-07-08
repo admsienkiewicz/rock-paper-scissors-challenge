@@ -13,7 +13,7 @@
     --dark-text: hsl(229, 25%, 31%);
     --score-text: hsl(229, 64%, 46%);
     --header-outline: hsl(217, 16%, 45%);
-    --white: rgb(210, 195, 195);
+    --white: rgb(255, 254, 254);
     --color-rock: hsl(349, 71%, 52%), hsl(349, 70%, 56%);
     --color-paper: hsl(230, 89%, 62%), hsl(230, 89%, 65%);
     --color-scissors: hsl(39, 89%, 49%), hsl(40, 84%, 53%);
@@ -40,6 +40,74 @@ body {
     backface-visibility: hidden;
     position: relative;
     overflow: hidden;
+}
+
+.rules-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    width: 40%;
+    min-width: 400px;
+    max-width: 600px;
+    aspect-ratio: 1/1;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    border-radius: 8px;
+    padding: 10px 30px 50px;
+    background-color: rgba(255, 254, 254, 0.977);
+}
+.rules-modal img {
+    width: 70%;
+}
+
+.modal-title {
+    color: var(--dark-text);
+    font-weight: 600;
+    font-size: 30px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--header-outline);
+    cursor: pointer;
+}
+
+.btn-rules {
+    position: absolute;
+    color: var(--header-outline);
+    background: none;
+    border: 2px solid var(--header-outline);
+    font-size: 20px;
+    text-transform: uppercase;
+    padding: 10px 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    right: 2vw;
+    bottom: 5vh;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    letter-spacing: 1px;
+    transition: all 0.2s;
+}
+
+.btn:hover {
+    box-shadow: -10px 15px 2px rgba(0, 0, 0, 0.2);
+}
+.btn-rules:hover,
+.close-modal:hover {
+    transform: scale(1.2);
 }
 
 header {
@@ -380,12 +448,13 @@ footer {
     justify-content: center;
     align-items: center;
     text-align: center;
-    position: fixed;
+    position: absolute;
     width: 100vw;
     height: 3vh;
     background: var(--white);
     bottom: 0;
     left: 0;
+    z-index: -1;
 }
 
 a:link {
@@ -441,6 +510,32 @@ a:active {
         100% {
             transform: translateX(40%);
         }
+    }
+
+    .rules-modal {
+        height: 100vh;
+        width: 100vw;
+        border-radius: 0;
+    }
+
+    .modal-title span {
+        justify-content: center;
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%);
+    }
+
+    .rules-modal img {
+        position: absolute;
+        top: 35%;
+    }
+
+    .close-modal {
+        position: absolute;
+        top: 75%;
+        left: 50%;
+        transform: translate(-50%);
     }
 
     footer {

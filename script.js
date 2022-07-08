@@ -1,5 +1,6 @@
 const points = document.querySelector('.points')
-
+const ruleModal = document.querySelector('.rules-modal')
+const rulesBtn = document.querySelector('.btn-rules')
 const optionSection = document.querySelector('.options')
 const fightSection = document.querySelector('.fight')
 
@@ -10,6 +11,14 @@ const gameSate = {
     aiPick: '',
     score: 0,
 }
+
+rulesBtn.addEventListener('click', () => {
+    ruleModal.classList.toggle('hidden')
+})
+
+document.querySelector('.close-modal').addEventListener('click', () => {
+    ruleModal.classList.toggle('hidden')
+})
 
 const updateScore = (win) => {
     const currScore = points.innerHTML
